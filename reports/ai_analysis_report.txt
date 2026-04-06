@@ -1,0 +1,37 @@
+AI CODE ANALYSIS REPORT
+==================================================
+
+--- Long Functions ---
+  [!] Function 'add_quiz_score' is 26 lines long (recommended max: 15)
+  [!] Function 'calculate_average_score' is 21 lines long (recommended max: 15)
+  [!] Function 'get_grade_from_score' is 28 lines long (recommended max: 15)
+  [!] Function 'generate_student_report' is 37 lines long (recommended max: 15)
+  [!] Function 'search_courses' is 21 lines long (recommended max: 15)
+
+--- Missing Docstrings ---
+  [!] Function 'process_batch_enrollment' is missing a docstring
+
+--- Short Variable Names ---
+  [!] Variable 's' at line 229 has a very short name
+
+--- TODO Comments ---
+  [!] Line 223 has a TODO/FIXME comment
+
+--- Long Lines (Style) ---
+  [!] Line 44 is 82 chars long (max: 79)
+  [!] Line 45 is 87 chars long (max: 79)
+  [!] Line 83 is 84 chars long (max: 79)
+  [!] Line 169 is 85 chars long (max: 79)
+  [!] Line 228 is 88 chars long (max: 79)
+
+--- Test Suggestions ---
+  [!] Write a test called 'test_add_quiz_score()'
+  [!] Write a test called 'test_calculate_average_score()'
+  [!] Write a test called 'test_get_grade_from_score()'
+  [!] Write a test called 'test_generate_student_report()'
+  [!] Write a test called 'test_search_courses()'
+  [!] Write a test called 'test_process_batch_enrollment()'
+  [!] Write a test called 'test_enroll_in_course()'
+  [!] Write a test called 'test_get_enrolled_courses()'
+
+Total: 21 issues/suggestions

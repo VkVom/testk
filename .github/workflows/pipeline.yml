@@ -1,0 +1,77 @@
+# ===============================================================
+#   GitHub Actions Workflow File
+#   AI-Enhanced CI/CD Pipeline for EdTech Software
+# ===============================================================
+#
+# WHAT IS THIS FILE?
+#   This is a GitHub Actions YAML file. When you push code to
+#   GitHub, GitHub automatically reads this file and runs the
+#   pipeline on their servers!
+#
+# WHERE DOES THIS FILE GO?
+#   It MUST be in: .github/workflows/  (this exact folder)
+#   GitHub looks for it there automatically.
+#
+# WHEN DOES IT TRIGGER?
+#   - Every time you push code to the 'main' branch
+#   - Every time someone creates a Pull Request to 'main'
+#
+# HOW TO USE IT:
+#   1. Create a GitHub repository
+#   2. Upload your project files
+#   3. GitHub will automatically detect this file and run the pipeline!
+# ===============================================================
+
+name: AI-Enhanced CI/CD Pipeline   # Name shown in GitHub Actions tab
+
+# TRIGGERS: When should this pipeline run?
+on:
+  push:
+    branches: [ main ]      # Run when code is pushed to 'main' branch
+  pull_request:
+    branches: [ main ]      # Run when a pull request targets 'main'
+
+# JOBS: What to do when triggered
+jobs:
+
+  # This is our main pipeline job
+  run-pipeline:
+    name: Run Full CI/CD Pipeline       # Display name in GitHub UI
+    runs-on: ubuntu-latest              # Use a Ubuntu Linux server (free on GitHub)
+
+    steps:
+
+      # STEP 1: Download the code from GitHub onto the runner server
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        # 'uses' means we're using a pre-built GitHub Action
+        # 'actions/checkout' downloads our code onto the server
+
+      # STEP 2: Install Python on the server
+      - name: Set Up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'        # We want Python 3.11
+
+      # STEP 3: Install any Python packages our project needs
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # If we had a requirements.txt, we'd run:
+          # pip install -r requirements.txt
+          # But our project only uses built-in Python modules, so nothing to install!
+          echo "No extra dependencies needed for this project."
+
+      # STEP 4: Run our pipeline script
+      - name: Run CI/CD Pipeline
+        run: python run_pipeline.py
+        # This runs our main pipeline file — same as running it locally!
+
+      # STEP 5: Upload the generated reports as artifacts
+      # (GitHub stores these so you can download and view them)
+      - name: Upload Reports
+        uses: actions/upload-artifact@v4
+        if: always()          # Run this even if previous steps failed
+        with:
+          name: pipeline-reports
+          path: reports/      # Upload everything in the 'reports' folder
