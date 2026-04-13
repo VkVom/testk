@@ -18,10 +18,7 @@ WHAT IS THIS FILE?
   that the AI Analyzer has something to detect and report!
 """
 
-
-# ---------------------------------------------------------------
 # STUDENT MANAGEMENT
-# ---------------------------------------------------------------
 
 class Student:
     """
@@ -61,9 +58,9 @@ class Student:
         return self.enrolled_courses
 
 
-# ---------------------------------------------------------------
+
 # QUIZ & SCORE MANAGEMENT
-# ---------------------------------------------------------------
+
 
 def add_quiz_score(student, course_name, score):
     """
